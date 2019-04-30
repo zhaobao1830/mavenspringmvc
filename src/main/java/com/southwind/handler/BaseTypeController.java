@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 @Controller
 @RequestMapping("/baseType")
 public class BaseTypeController {
@@ -41,5 +44,15 @@ public class BaseTypeController {
     @ResponseBody
     public String baseTYpeDo2(@RequestParam(value = "xage", required = false) Integer age) {
         return "age：" + age;
+    }
+
+    @RequestMapping("baseTYpeDo3")
+    @ResponseBody
+    public String baseTypeDo3(String[] name) {
+        StringBuilder sbf = new StringBuilder();
+        for (String item : name) {
+            sbf.append(item).append(" ");
+        }
+        return Arrays.toString(name);
     }
 }
